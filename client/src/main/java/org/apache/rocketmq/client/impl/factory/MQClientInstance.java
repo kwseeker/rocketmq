@@ -671,6 +671,7 @@ public class MQClientInstance {
                     continue;
                 }
 
+                log.info(">>> send heartbeatData to broker({}): {}\n", addr, heartbeatData.toJson());
                 sendHeartbeatToBroker(id, brokerName, addr, heartbeatData);
             }
         }
@@ -787,6 +788,7 @@ public class MQClientInstance {
                             changed = this.isNeedUpdateTopicRouteInfo(topic);
                         } else {
                             log.info("the topic[{}] route info changed, old[{}] ,new[{}]", topic, old, topicRouteData);
+                            log.info(">>> the topic[{}] route info changed, old[{}] ,new[{}]\n", topic, old==null? "null": old.toJson(), topicRouteData.toJson());
                         }
 
                         if (changed) {

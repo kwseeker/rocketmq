@@ -17,6 +17,10 @@
   -->
 
 <configuration scan="true" scanPeriod="30 seconds">
+    <properties>
+        <property name="LOG_PATH" value="/home/arvin/mywork/github/rocketmq/logs"/>
+    </properties>
+
     <appender name="DefaultAppender"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${user.home}${file.separator}logs${file.separator}rocketmqlogs${file.separator}namesrv_default.log</file>
@@ -87,7 +91,8 @@
         </encoder>
     </appender>
 
-    <logger name="RocketmqNamesrv" additivity="false" level="INFO">
+    <!--<logger name="RocketmqNamesrv" additivity="false" level="INFO">-->
+    <logger name="RocketmqNamesrv" additivity="true" level="INFO">
         <appender-ref ref="RocketmqNamesrvAppender"/>
     </logger>
 
@@ -113,5 +118,6 @@
 
     <root level="INFO">
         <appender-ref ref="DefaultAppender"/>
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>

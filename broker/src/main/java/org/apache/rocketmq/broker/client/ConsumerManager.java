@@ -16,6 +16,7 @@
  */
 package org.apache.rocketmq.broker.client;
 
+import com.alibaba.fastjson.JSON;
 import io.netty.channel.Channel;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -181,6 +182,7 @@ public class ConsumerManager {
             callConsumerIdsChangeListener(ConsumerGroupEvent.CLIENT_REGISTER, group, clientChannelInfo,
                 subList.stream().map(SubscriptionData::getTopic).collect(Collectors.toSet()));
             ConsumerGroupInfo tmp = new ConsumerGroupInfo(group, consumeType, messageModel, consumeFromWhere);
+            LOGGER.info(">>> registerConsumer group: {}, consumerGroupInfo: {}\n", group, JSON.toJSONString(tmp));
             ConsumerGroupInfo prev = this.consumerTable.putIfAbsent(group, tmp);
             consumerGroupInfo = prev != null ? prev : tmp;
         }

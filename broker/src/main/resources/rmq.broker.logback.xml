@@ -599,7 +599,8 @@
         </encoder>
     </appender>
 
-    <logger name="RocketmqBroker" additivity="false" level="INFO">
+    <!--<logger name="RocketmqBroker" additivity="false" level="INFO">-->
+    <logger name="RocketmqBroker" additivity="true" level="INFO">
         <appender-ref ref="RocketmqBrokerSiftingAppender"/>
     </logger>
 
@@ -683,5 +684,6 @@
 
     <root level="INFO">
         <appender-ref ref="DefaultSiftingAppender"/>
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>

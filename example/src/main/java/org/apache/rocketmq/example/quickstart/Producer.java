@@ -33,7 +33,8 @@ public class Producer {
     public static final int MESSAGE_COUNT = 1000;
     public static final String PRODUCER_GROUP = "please_rename_unique_group_name";
     public static final String DEFAULT_NAMESRVADDR = "127.0.0.1:9876";
-    public static final String TOPIC = "TopicTest";
+    //public static final String TOPIC = "TopicTest";
+    public static final String TOPIC = "TopicTest-2";
     public static final String TAG = "TagA";
 
     public static void main(String[] args) throws MQClientException, InterruptedException {
@@ -54,14 +55,15 @@ public class Producer {
          * </pre>
          */
         // Uncomment the following line while debugging, namesrvAddr should be set to your local address
-        // producer.setNamesrvAddr(DEFAULT_NAMESRVADDR);
+         producer.setNamesrvAddr(DEFAULT_NAMESRVADDR);
 
         /*
          * Launch the instance.
          */
         producer.start();
 
-        for (int i = 0; i < MESSAGE_COUNT; i++) {
+        //for (int i = 0; i < MESSAGE_COUNT; i++) {
+        for (int i = 0; i < 1; i++) {
             try {
 
                 /*
@@ -75,7 +77,7 @@ public class Producer {
                 /*
                  * Call send message to deliver message to one of brokers.
                  */
-                SendResult sendResult = producer.send(msg, 20 * 1000);
+                SendResult sendResult = producer.send(msg, 2000 * 1000);
                 /*
                  * There are different ways to send message, if you don't care about the send result,you can use this way
                  * {@code

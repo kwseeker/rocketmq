@@ -46,6 +46,7 @@ public class NettyDecoder extends LengthFieldBasedFrameDecoder {
                 return null;
             }
             RemotingCommand cmd = RemotingCommand.decode(frame);
+            log.info("NettyDecoder#decode(), cmd={}", cmd);
             cmd.setProcessTimer(timer);
             return cmd;
         } catch (Exception e) {

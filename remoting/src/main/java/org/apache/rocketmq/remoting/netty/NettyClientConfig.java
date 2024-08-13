@@ -51,7 +51,8 @@ public class NettyClientConfig {
     private int writeBufferLowWaterMark = NettySystemConfig.writeBufferLowWaterMark;
 
     private boolean disableCallbackExecutor = false;
-    private boolean disableNettyWorkerGroup = false;
+    //private boolean disableNettyWorkerGroup = false;
+    private boolean disableNettyWorkerGroup = true;
 
     private long maxReconnectIntervalTimeSeconds = 60;
 
