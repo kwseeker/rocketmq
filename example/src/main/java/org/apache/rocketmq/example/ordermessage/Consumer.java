@@ -28,12 +28,13 @@ import org.apache.rocketmq.common.message.MessageExt;
 
 public class Consumer {
 
+    public static final String DEFAULT_NAMESRVADDR = "127.0.0.1:9876";
+
     public static void main(String[] args) throws MQClientException {
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("please_rename_unique_group_name_3");
-
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("ordered_messages_c_group");
+        consumer.setNamesrvAddr(DEFAULT_NAMESRVADDR);
         consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
-
-        consumer.subscribe("TopicTest", "TagA || TagC || TagD");
+        consumer.subscribe("TopicOrderedMessage", "TagA || TagC || TagD");
 
         consumer.registerMessageListener(new MessageListenerOrderly() {
             AtomicLong consumeTimes = new AtomicLong(0);

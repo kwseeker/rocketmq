@@ -20,6 +20,8 @@ import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
+import org.apache.rocketmq.logging.org.slf4j.Logger;
+import org.apache.rocketmq.logging.org.slf4j.LoggerFactory;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
 
 /**
@@ -27,14 +29,16 @@ import org.apache.rocketmq.remoting.common.RemotingHelper;
  */
 public class Producer {
 
+    private static final Logger log = LoggerFactory.getLogger(Producer.class);
+
     /**
      * The number of produced messages.
      */
     public static final int MESSAGE_COUNT = 1000;
-    public static final String PRODUCER_GROUP = "please_rename_unique_group_name";
+    public static final String PRODUCER_GROUP = "GA";
     public static final String DEFAULT_NAMESRVADDR = "127.0.0.1:9876";
     //public static final String TOPIC = "TopicTest";
-    public static final String TOPIC = "TopicTest-2";
+    public static final String TOPIC = "TopicTest-1";
     public static final String TAG = "TagA";
 
     public static void main(String[] args) throws MQClientException, InterruptedException {
@@ -113,6 +117,7 @@ public class Producer {
                  */
 
                 System.out.printf("%s%n", sendResult);
+                log.info(">>> send result: {}", sendResult);
             } catch (Exception e) {
                 e.printStackTrace();
                 Thread.sleep(1000);

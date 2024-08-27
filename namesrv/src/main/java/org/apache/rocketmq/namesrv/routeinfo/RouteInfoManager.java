@@ -235,7 +235,7 @@ public class RouteInfoManager {
         final TopicConfigSerializeWrapper topicConfigWrapper,
         final List<String> filterServerList,
         final Channel channel) {
-        log.info(">>> registerBroker: \n    clusterName:{}\n    brokerAddr:{}\n     brokerName:{}\n    brokerId:{}\n   haServerAddr:{}\n   zoneName:{}\n   timeoutMillis:{}\n    enableActingMaster:{}\n    topicConfigWrapper:{}\n    filterServerList:{}\n    channel:{}",
+        log.info(">>> registerBroker: \n    clusterName:{}\n    brokerAddr:{}\n    brokerName:{}\n    brokerId:{}\n    haServerAddr:{}\n    zoneName:{}\n    timeoutMillis:{}\n    enableActingMaster:{}\n    topicConfigWrapper:{}\n    filterServerList:{}\n    channel:{}",
             clusterName, brokerAddr, brokerName, brokerId, haServerAddr, zoneName, timeoutMillis, enableActingMaster, topicConfigWrapper.toJson(), filterServerList, channel);
 
         RegisterBrokerResult result = new RegisterBrokerResult();

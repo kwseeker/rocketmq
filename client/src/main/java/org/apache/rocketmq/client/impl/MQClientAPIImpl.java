@@ -1024,6 +1024,7 @@ public class MQClientAPIImpl implements NameServerUpdateCallback {
             public void operationSucceed(RemotingCommand response) {
                 try {
                     PullResult pullResult = MQClientAPIImpl.this.processPullResponse(response, addr);
+                    log.info(">>> async pull result: {}", pullResult.toString());
                     pullCallback.onSuccess(pullResult);
                 } catch (Exception e) {
                     pullCallback.onException(e);
